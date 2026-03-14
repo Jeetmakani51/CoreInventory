@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock - Inventory</title>
+  <link rel="stylesheet" href="../static/stocks.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="top-nav">
+    <ul>
+      <li><a href="./dashboard.html">Dashboard</a></li>
+      <li><a href="./operations.html">Operations</a></li>
+      <li><a href="./products.html">Products</a></li>
+      <li><a href="./history.html">Move History</a></li>
+      <li><a href="./settings.html">Settings</a></li>
+    </ul>
+    <span><a href="./profile.html">Profile</a></span>
+  </nav>
+
+  <main class="app-container">
+    <section id="stock-view">
+      <header class="page-header">
+        <div class="header-titles">
+          <h1>Stock</h1>
+          <p class="subtitle">Warehouse details & location</p>
+        </div>
+        <div class="header-actions">
+          <button id="btn-save-all" class="btn-green" style="display: none;">✓ Save Changes</button>
+          <button id="btn-add-product" class="btn-dark">+ Add Product</button>
+        </div>
+      </header>
+
+      <div class="card list-card">
+        <div class="card-toolbar">
+          <input type="text" id="search-bar" class="search-bar" placeholder="Search products...">
+          <span class="record-count">0 products</span>
+        </div>
+        
+        <table class="data-table" id="stock-table">
+          <thead>
+            <tr>
+              <th>PRODUCT</th>
+              <th>PER UNIT COST</th>
+              <th>ON HAND</th>
+              <th>FREE TO USE</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="../static/stocks.js"></script>
+</body>
+</html>

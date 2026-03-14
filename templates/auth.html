@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authentication</title>
+  <link rel="stylesheet" href="../static/auth.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      <div class="app-logo">App Logo</div>
+
+      <form id="login-form" class="active">
+        <h2>Welcome Back</h2>
+        <div class="form-group">
+          <label>Login ID or Email</label>
+          <input type="text" id="login-id" placeholder="Enter Login Id" required>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="login-password" placeholder="Enter Password" required>
+        </div>
+        
+        <div class="auth-actions">
+          <button type="submit" class="btn-dark full-width">SIGN IN</button>
+        </div>
+
+        <div class="divider"><span>OR</span></div>
+        <button type="button" class="btn-outline full-width google-btn">
+          <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google"> Sign in with Google
+        </button>
+
+        <div class="auth-links">
+          <a href="#" id="forgot-pw-link">Forget Password?</a> | 
+          <a href="#" id="show-signup">Sign Up</a>
+        </div>
+      </form>
+
+      <form id="signup-form" style="display: none;">
+        <h2>Create Account</h2>
+        <div class="form-group">
+          <label>Login ID</label>
+          <input type="text" id="signup-id" placeholder="6-12 characters" required>
+          <span class="error-msg" id="id-error"></span>
+        </div>
+        <div class="form-group">
+          <label>Email ID</label>
+          <input type="email" id="signup-email" placeholder="Enter Email Id" required>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="signup-password" placeholder="Min 9 chars, 1 upper, 1 lower, 1 special" required>
+          <span class="error-msg" id="pw-error"></span>
+        </div>
+        <div class="form-group">
+          <label>Re-Enter Password</label>
+          <input type="password" id="signup-confirm" placeholder="Confirm Password" required>
+          <span class="error-msg" id="confirm-error"></span>
+        </div>
+
+        <div class="auth-actions">
+          <button type="submit" class="btn-dark full-width">SIGN UP</button>
+        </div>
+
+        <div class="divider"><span>OR</span></div>
+        <button type="button" class="btn-outline full-width google-btn">
+          <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google"> Sign up with Google
+        </button>
+
+        <div class="auth-links">
+          Already have an account? <a href="#" id="show-login">Sign In</a>
+        </div>
+      </form>
+
+      <form id="forgot-form" style="display: none;">
+        <h2>Reset Password</h2>
+        <p class="subtitle">Enter your email to receive an OTP.</p>
+        <div class="form-group">
+          <label>Email ID</label>
+          <input type="email" id="reset-email" placeholder="Enter Email Id" required>
+        </div>
+        <div class="auth-actions">
+          <button type="submit" class="btn-dark full-width">SEND OTP</button>
+        </div>
+        <div class="auth-links">
+          <a href="#" id="back-to-login">Back to Sign In</a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="../static/auth.js"></script>
+</body>
+</html>

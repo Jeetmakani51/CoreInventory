@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Location - Inventory</title>
+  <link rel="stylesheet" href="../static/location.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="top-nav">
+    <ul>
+      <li><a href="./dashboard.html">Dashboard</a></li>
+      <li><a href="./operations.html">Operations</a></li>
+      <li><a href="./products.html">Products</a></li>
+      <li><a href="./history.html">Move History</a></li>
+      <li><a href="./settings.html">Settings</a></li>
+    </ul>
+    <span><a href="./profile.html">Profile</a></span>
+  </nav>
+
+  <main class="app-container">
+    <header class="page-header">
+      <div class="header-titles">
+        <h1>Location</h1>
+        <p class="subtitle">Define storage locations within a warehouse</p>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="btn-outline top-discard">Discard</button>
+        <button type="button" class="btn-dark top-save">✓ Save</button>
+      </div>
+    </header>
+
+    <div class="card form-card">
+      <div class="card-header-flex">
+        <h3 class="card-section-title no-border">LOCATION DETAILS</h3>
+        <span class="status-badge active-status">Active</span>
+      </div>
+
+      <form id="location-form">
+        <div class="section-divider">
+          <span>BASIC INFORMATION</span>
+          <hr>
+        </div>
+
+        <div class="form-row-horizontal">
+          <label for="loc-name">Name <span class="required">*</span></label>
+          <div class="input-wrapper">
+            <input type="text" id="loc-name" placeholder="e.g. Shelf A1, Room 3..." required>
+          </div>
+        </div>
+
+        <div class="form-row-horizontal">
+          <label for="loc-code">Short Code <span class="required">*</span></label>
+          <div class="input-wrapper">
+            <input type="text" id="loc-code" placeholder="E.G. A1" maxlength="6" required>
+            <p class="helper-text">Max 6 characters. Appears in stock references.</p>
+          </div>
+        </div>
+
+        <div class="form-row-horizontal">
+          <label for="loc-warehouse">Warehouse <span class="required">*</span></label>
+          <div class="input-wrapper">
+            <select id="loc-warehouse" required>
+              <option value="WH_MAIN">WH — Main Warehouse</option>
+            </select>
+            <p class="helper-text">The parent warehouse this location belongs to.</p>
+          </div>
+        </div>
+
+        <div class="form-row-horizontal">
+          <label for="loc-type">Location Type</label>
+          <div class="input-wrapper">
+            <select id="loc-type">
+              <option value="internal">Internal</option>
+              <option value="view">View</option>
+              <option value="customer">Customer Location</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-icon">i</div>
+          <p>This holds multiple locations within a warehouse — such as rooms, aisles, shelves, or bins. Each location can be nested under a parent for hierarchical organisation.</p>
+        </div>
+
+        <div class="form-footer">
+          <div class="footer-left">
+            <p class="helper-text">Fields marked <span class="required">*</span> are required</p>
+          </div>
+          <div class="footer-actions">
+            <button type="button" id="btn-delete" class="btn-danger-outline">Delete</button>
+            <button type="button" id="btn-discard" class="btn-outline">Discard</button>
+            <button type="submit" id="btn-save" class="btn-dark">✓ Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="../static/location.js"></script>
+</body>
+</html>
