@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-deliveries').textContent = `${dashboardData.deliveries.pending} To Deliver`;
   document.getElementById('stat-delivery-late').textContent = dashboardData.deliveries.late;
   document.getElementById('stat-delivery-waiting').textContent = dashboardData.deliveries.waiting;
-  document.getE dlementById('stat-delivery-ops').textContent = dashboardData.deliveries.totalOperations;
+  document.getElementById('stat-delivery-ops').textContent = dashboardData.deliveries.totalOperations;
 
   // 3. Navigation Actions
   document.getElementById('btn-receipts').addEventListener('click', () => {
