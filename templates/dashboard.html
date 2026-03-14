@@ -1,70 +1,83 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Core Inventory</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Core Inventory</title>
+  <link rel="stylesheet" href="../static/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
+  <nav class="top-nav">
+    <ul>
+      <li><a href="./dashboard.html" class="active-nav">Dashboard</a></li>
+      <li><a href="./operations.html">Operations</a></li>
+      <li><a href="./stocks.html">Stock</a></li>
+      <li><a href="./history.html">Move History</a></li>
+      <li><a href="./settings.html">Settings</a></li>
+    </ul>
+    <span><a href="./profile.html">Profile</a></span>
+  </nav>
 
-    <div class="navbar">
+  <main class="app-container">
+    <header class="page-header">
+      <div class="header-titles">
+        <h1>Dashboard</h1>
+        <p class="subtitle">Overview of inventory operations</p>
+      </div>
+    </header>
 
-        <div class="nav-links">
-            <a href="#">Dashboard</a>
-            <a href="#">Operations</a>
-            <a href="#">Stock</a>
-            <a href="movehistory.html">Move History</a>
-            <a href="#">Settings</a>
+<div class="dashboard-grid">
+      <div class="card dash-card">
+        <div class="card-header">
+          <h2>Receipts</h2>
+          <span class="icon-placeholder">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </span>
         </div>
-
-        <div class="title">
-            Core Inventory
+        <div class="card-body">
+          <button id="btn-receipts" class="btn-dark full-width large-btn">0 To Receive</button>
         </div>
+        <div class="card-footer">
+          <div class="stat-item">
+            <span id="stat-receipt-late" class="stat-value text-red">0</span>
+            <span class="stat-label">Late</span>
+          </div>
+          <div class="stat-item">
+            <span id="stat-receipt-ops" class="stat-value">0</span>
+            <span class="stat-label">Operations</span>
+          </div>
+        </div>
+      </div>
 
+      <div class="card dash-card">
+        <div class="card-header">
+          <h2>Deliveries</h2>
+          <span class="icon-placeholder">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 14l-5-5-5 5M12 9v12"/></svg>
+          </span>
+        </div>
+        <div class="card-body">
+          <button id="btn-deliveries" class="btn-green full-width large-btn">0 To Deliver</button>
+        </div>
+        <div class="card-footer">
+          <div class="stat-item">
+            <span id="stat-delivery-late" class="stat-value text-red">0</span>
+            <span class="stat-label">Late</span>
+          </div>
+          <div class="stat-item">
+            <span id="stat-delivery-waiting" class="stat-value">0</span>
+            <span class="stat-label">Waiting</span>
+          </div>
+          <div class="stat-item">
+            <span id="stat-delivery-ops" class="stat-value">0</span>
+            <span class="stat-label">Operations</span>
+          </div>
+        </div>
+      </div>
     </div>
+  </main>
 
-
-    <div class="container">
-
-        <div class="cards">
-
-            <div class="card receipt">
-
-                <h2>Receipt</h2>
-
-                <button class="btn receive-btn">
-                    4 Items to Receive
-                </button>
-
-                <div class="stats">
-                    <p>1 Late</p>
-                    <p>6 Operations</p>
-                </div>
-
-            </div>
-
-
-            <div class="card delivery">
-
-                <h2>Delivery</h2>
-
-                <button class="btn deliver-btn">
-                    4 Items to Deliver
-                </button>
-
-                <div class="stats">
-                    <p>1 Late</p>
-                    <p>2 Waiting</p>
-                    <p>6 Operations</p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
+  <script src="../static/dashboard.js"></script>
 </body>
-
 </html>
