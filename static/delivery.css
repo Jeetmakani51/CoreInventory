@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 1280px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  background-color: #000;
+  color: #fff;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a, nav span a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.delivery-header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #fff;
+}
+
+.header-left{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-new{
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+h1{
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.header-right{
+  display: flex;
+  gap: 10px;
+}
+
+.icon-btn{
+  background: transparent;
+  border: 1px solid transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.active{
+  border: 1px solid #fff;
+  border-radius: 4px;
+}
+
+.delivery body{
+  width: 100%;
+  margin-top: 10px;
+}
+
+.delivery-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.delivery-table th{
+  padding: 12px 5px;
+  font-weight: normal;
+  border-bottom:1px solid #fff;
+  font-size: 14px;
+}
+
+.delivery-table td{
+  padding: 12px 5px;
+  border-bottom: 0.5px solid rgba(255,140,140,0.3);
+  font-size: 14px;
+}
+
+.ref-link .contact-link{
+  color: #fff;
+  cursor: pointer;
+}
+
+.status-ready{
+  color: #fff;
+}
+
+.delivery-table tbody tr:hover{
+  background-color: rgba(255,140,140,0.05);
+}
+
+.action-status-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255,140,140,0.3);
+  margin-bottom: 20px;
+}
+
+.action-buttons{
+  display: flex;
+  gap: 10px;
+}
+
+.btn-primary, .btn-secondary{
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary{
+  background-color: rgba(255, 140, 140, 0.1);
+  font-weight: bold;
+}
+
+.status-tracker{
+  border: 1px solid #fff;
+  border-radius: 20px;
+  padding: 4px 15px;
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.status-step{
+  color: rgba(255, 140, 140, 0.5);
+}
+
+.status-step:not(:last-child)::after{
+  content: ">";
+  margin-left: 10px;
+  color: rgba(255,140,140,0.3);
+}

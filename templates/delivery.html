@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delivery</title>
+  <link rel="stylesheet" href="../static/delivery.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="./dashboard.html">Dashboard</a></li>
+      <li><a href="./operations.html">Opeations</a></li>
+      <li><a href="./producsts.html">Products</a></li>
+      <li><a href="./history.html">Move History</a></li>
+      <li><a href="./settings.html">Settings</a></li>
+    </ul>
+    <span><a href="./profile.html">Profile</a></span>
+  </nav>
+  <header class="delivery-header">
+    <div class="header-left">
+      <button class="btn-new">NEW</button>
+      <h1>Delivery</h1>
+    </div>
+    <div class="header-right">
+      <button class="icon-btn"><img src="../assets/search.png" alt="search"></button>
+      <button class="icon-btn"><img src="../assets/list.png" alt="list"></button>
+      <button class="icon-btn"><img src="../assets/kanban-list.png" alt="kanban-list"></button>
+    </div>
+  </header>
+  <main class="delivery-body">
+    <table class="delivery-table">
+      <thead>
+        <tr>
+          <th>Reference</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Contact</th>
+          <th>Schedule date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ref-link">WH/OUT/0001</td>
+          <td>WH/Stock1</td>
+          <td>vendor</td>
+          <td class="contact-link">Azure Interior</td>
+          <td></td>
+          <td class="status-ready">Ready</td>
+        </tr>
+        <tr>
+          <td class="ref-link">WH/OUT/0002</td>
+          <td>WH/Stock1</td>
+          <td>vendor</td>
+          <td class="contact-link">Azure Interior</td>
+          <td></td>
+          <td class="status-ready">Ready</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <section class="delivery-details">
+      <div class="action-status-row">
+        <div class="action-buttons">
+          <button class="btn-primary">Validate</button>
+          <button class="btn-secondary">Print</button>
+          <button class="btn-secondary">Cancel</button>
+        </div>
+        <div class="status-tracker">
+          <span class="status-step">Draft</span>
+          <span class="status-step">Waiting</span>
+          <span class="status-step">Ready</span>
+          <span class="status-step">Done</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
