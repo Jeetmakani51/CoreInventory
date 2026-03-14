@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operations - Core Inventory</title>
+  <link rel="stylesheet" href="../static/operations.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="liquid-bg">
+    <div class="blob"></div>
+    <div class="blob"></div>
+  </div>
+
+  <nav class="top-nav">
+    <ul>
+      <li><a href="./dashboard.html">Dashboard</a></li>
+      <li><a href="./operations.html" class="active-nav">Operations</a></li>
+      <li><a href="./products.html">Products</a></li>
+      <li><a href="./history.html">Move History</a></li>
+      <li><a href="./settings.html">Settings</a></li>
+    </ul>
+    <span><a href="./profile.html">Profile</a></span>
+  </nav>
+
+  <main class="app-container">
+    <header class="page-header">
+      <div class="header-titles">
+        <h1>Operations</h1>
+        <p class="subtitle">Manage incoming, outgoing, and internal stock movements</p>
+      </div>
+    </header>
+
+    <div class="operations-grid">
+      
+      <div class="card op-card">
+        <div class="icon-box green-glow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        </div>
+        <h2>Receipts</h2>
+        <p class="text-muted">Process incoming goods from vendors and update warehouse stock levels automatically.</p>
+        <button id="nav-receipts" class="btn-green full-width mt-auto">Open Receipts</button>
+      </div>
+
+      <div class="card op-card">
+        <div class="icon-box accent-glow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 14l-5-5-5 5M12 9v12"/></svg>
+        </div>
+        <h2>Delivery Orders</h2>
+        <p class="text-muted">Manage outgoing shipments, pick/pack orders, and deduct items from inventory.</p>
+        <button id="nav-deliveries" class="btn-accent full-width mt-auto">Open Deliveries</button>
+      </div>
+
+      <div class="card op-card">
+        <div class="icon-box red-glow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        </div>
+        <h2>Stock Adjustments</h2>
+        <p class="text-muted">Fix mismatches between recorded stock and physical counts, or execute internal transfers.</p>
+        <button id="nav-adjustments" class="btn-outline full-width mt-auto">Open Adjustments</button>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../static/operations.js"></script>
+</body>
+</html>

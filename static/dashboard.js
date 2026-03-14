@@ -2,39 +2,52 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Simulated data payload from your Flask backend
   const dashboardData = {
-    receipts: {
-      pending: 4,
-      late: 1,
-      totalOperations: 6
-    },
-    deliveries: {
-      pending: 4,
-      late: 1,
-      waiting: 2,
-      totalOperations: 6
-    }
+    totalProducts: 1254,
+    lowStock: 18,
+    pendingReceipts: 7,
+    pendingDeliveries: 12,
+    internalTransfers: 3
   };
 
-  // 1. Populate Receipt Data
-  document.getElementById('btn-receipts').textContent = `${dashboardData.receipts.pending} To Receive`;
-  document.getElementById('stat-receipt-late').textContent = dashboardData.receipts.late;
-  document.getElementById('stat-receipt-ops').textContent = dashboardData.receipts.totalOperations;
+  // Function to populate the dashboard KPIs
+  const populateKPIs = (data) => {
+    document.getElementById('kpi-total-products').textContent = data.totalProducts;
+    document.getElementById('kpi-low-stock').textContent = data.lowStock;
+    document.getElementById('kpi-receipts').textContent = data.pendingReceipts;
+    document.getElementById('kpi-deliveries').textContent = data.pendingDeliveries;
+    document.getElementById('kpi-transfers').textContent = data.internalTransfers;
+  };
 
-  // 2. Populate Delivery Data
-  document.getElementById('btn-deliveries').textContent = `${dashboardData.deliveries.pending} To Deliver`;
-  document.getElementById('stat-delivery-late').textContent = dashboardData.deliveries.late;
-  document.getElementById('stat-delivery-waiting').textContent = dashboardData.deliveries.waiting;
-  document.getElementById('stat-delivery-ops').textContent = dashboardData.deliveries.totalOperations;
+  // Initial Load
+  populateKPIs(dashboardData);
 
-  // 3. Navigation Actions
-  document.getElementById('btn-receipts').addEventListener('click', () => {
-    // Redirects to operations page (you can pass URL parameters later to auto-filter)
-    window.location.href = './operations.html?view=receipts';
-  });
+  // Dynamic Filters Logic
+  const filterSelects = document.querySelectorAll('.filter-select');
+  
+  filterSelects.forEach(select => {
+    select.addEventListener('change', () => {
+      // Collect all current filter values
+      const filters = {
+        docType: document.getElementById('filter-doc').value,
+        status: document.getElementById('filter-status').value,
+        location: document.getElementById('filter-location').value,
+        category: document.getElementById('filter-category').value
+      };
 
-  document.getElementById('btn-deliveries').addEventListener('click', () => {
-    // Redirects to the delivery page we built earlier
-    window.location.href = './delivery.html';
+      console.log("Filters updated. Fetching new data...", filters);
+
+      // Simulate an API call fetching new filtered data
+      // In production, this will be: fetch(`/api/dashboard?location=${filters.location}...`)
+      const simulatedFilteredData = {
+        totalProducts: Math.floor(Math.random() * 1000) + 100,
+        lowStock: Math.floor(Math.random() * 20),
+        pendingReceipts: Math.floor(Math.random() * 10),
+        pendingDeliveries: Math.floor(Math.random() * 15),
+        internalTransfers: Math.floor(Math.random() * 5)
+      };
+
+      populateKPIs(simulatedFilteredData);
+    });
   });
 
 });

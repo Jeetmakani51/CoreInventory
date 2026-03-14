@@ -1,0 +1,152 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#0f172a;
+    --text:#f8fafc;
+    --muted:#94a3b8;
+    --card:rgba(15,23,42,0.6);
+    --border:rgba(255,255,255,0.1);
+    --green:#10b981;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:Inter, sans-serif;
+    line-height:1.5;
+}
+
+/* background blobs */
+
+.liquid-bg{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+}
+
+.blob{
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    filter:blur(80px);
+    background:rgba(56,189,248,0.2);
+    animation:move 18s infinite alternate;
+}
+
+.blob:nth-child(2){
+    background:rgba(16,185,129,0.15);
+    right:0;
+}
+
+@keyframes move{
+    from{transform:translate(-10%,-10%);}
+    to{transform:translate(20%,20%) rotate(360deg);}
+}
+
+/* navigation */
+
+.top-nav{
+    display:flex;
+    justify-content:space-between;
+    padding:20px 40px;
+    font-size:14px;
+    color:var(--muted);
+}
+
+.top-nav ul{
+    display:flex;
+    gap:22px;
+    list-style:none;
+}
+
+.top-nav a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.top-nav a:hover,
+.active{
+    color:white;
+}
+
+/* container */
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:25px;
+}
+
+.page-title{
+    margin-bottom:25px;
+}
+
+.page-title h1{
+    font-family:Merriweather, serif;
+}
+
+.page-title p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* card */
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:25px;
+    backdrop-filter:blur(18px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.5);
+}
+
+.card-header{
+    padding:20px;
+    border-bottom:1px solid var(--border);
+}
+
+.card-body{
+    padding:20px;
+}
+
+/* form */
+
+.product-form{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.product-form label{
+    font-size:13px;
+    color:var(--muted);
+}
+
+input,select{
+    padding:10px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    background:rgba(0,0,0,0.25);
+    color:white;
+}
+
+/* button */
+
+.btn{
+    margin-top:10px;
+    padding:14px;
+    border-radius:10px;
+    border:1px solid rgba(16,185,129,0.3);
+    background:rgba(16,185,129,0.15);
+    color:var(--green);
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:rgba(16,185,129,0.25);
+}

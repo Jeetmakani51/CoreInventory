@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>General Settings - Inventory</title>
+  <link rel="stylesheet" href="../static/general.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="liquid-bg">
+    <div class="blob"></div>
+    <div class="blob"></div>
+  </div>
+
+  <nav class="top-nav">
+    <ul>
+      <li><a href="./dashboard.html">Dashboard</a></li>
+      <li><a href="./operations.html">Operations</a></li>
+      <li><a href="./products.html">Products</a></li>
+      <li><a href="./history.html">Move History</a></li>
+      <li><a href="./settings.html" class="active-nav">Settings</a></li>
+    </ul>
+    <span><a href="./profile.html">Profile</a></span>
+  </nav>
+
+  <main class="app-container">
+    <header class="page-header">
+      <div class="breadcrumbs">
+        <a href="./settings.html" class="back-link">Settings</a> &rsaquo; <span>General</span>
+      </div>
+      <div class="header-titles" style="margin-top: 10px;">
+        <h1>General Settings</h1>
+        <p class="subtitle">Global system preferences and company details</p>
+      </div>
+    </header>
+
+    <div class="card form-card">
+      <form id="general-form">
+        
+        <div class="section-divider">
+          <span>COMPANY INFORMATION</span>
+          <hr>
+        </div>
+
+        <div class="form-row-horizontal">
+          <label for="comp-name">Company Name</label>
+          <div class="input-wrapper">
+            <input type="text" id="comp-name" value="Core Inventory Solutions" required>
+          </div>
+        </div>
+
+        <div class="form-row-horizontal">
+          <label for="comp-email">Contact Email</label>
+          <div class="input-wrapper">
+            <input type="email" id="comp-email" value="admin@coreinventory.com">
+          </div>
+        </div>
+
+        <div class="form-row-horizontal">
+          <label for="comp-currency">Base Currency</label>
+          <div class="input-wrapper">
+            <select id="comp-currency">
+              <option value="INR" selected>INR (₹) - Indian Rupee</option>
+              <option value="USD">USD ($) - US Dollar</option>
+              <option value="EUR">EUR (€) - Euro</option>
+            </select>
+            <p class="helper-text">Default currency used for product costs and valuations.</p>
+          </div>
+        </div>
+
+        <div class="section-divider">
+          <span>INVENTORY PREFERENCES</span>
+          <hr>
+        </div>
+
+        <div class="form-row-horizontal">
+          <label for="pref-weight">Weight Unit</label>
+          <div class="input-wrapper">
+            <select id="pref-weight">
+              <option value="kg" selected>Kilograms (kg)</option>
+              <option value="lb">Pounds (lb)</option>
+              <option value="g">Grams (g)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-horizontal">
+          <label for="pref-dim">Dimension Unit</label>
+          <div class="input-wrapper">
+            <select id="pref-dim">
+              <option value="cm" selected>Centimeters (cm)</option>
+              <option value="m">Meters (m)</option>
+              <option value="in">Inches (in)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-horizontal">
+          <label for="pref-alerts">Low Stock Alerts</label>
+          <div class="input-wrapper">
+            <select id="pref-alerts">
+              <option value="true" selected>Enabled (Show on Dashboard)</option>
+              <option value="false">Disabled</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <div class="footer-left"></div>
+          <div class="footer-actions">
+            <button type="button" class="btn-outline" onclick="window.location.href='./settings.html'">Cancel</button>
+            <button type="submit" class="btn-dark">✓ Save Changes</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </main>
+
+  <script src="../static/general.js"></script>
+</body>
+</html>

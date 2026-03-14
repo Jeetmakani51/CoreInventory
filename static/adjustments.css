@@ -3,7 +3,6 @@
   margin: 0;
   padding: 0;
 }
-
 :root {
   --bg-color: #0f172a;
   --text-main: #f8fafc;
@@ -14,34 +13,37 @@
   --green-primary: #10b981;
   --red-error: #ef4444;
 }
-
 body {
   background-color: var(--bg-color);
   color: var(--text-main);
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1.5;
   padding-bottom: 40px;
   overflow-x: hidden;
 }
 
-/* --- Animated Liquid Background --- */
 .liquid-bg {
   position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: -1;
   overflow: hidden;
 }
-
 .blob {
   position: absolute;
   width: 500px;
   height: 500px;
-  background: linear-gradient(180deg, rgba(56, 189, 248, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(56, 189, 248, 0.2) 0%,
+    rgba(139, 92, 246, 0.2) 100%
+  );
   filter: blur(80px);
   border-radius: 50%;
   animation: move 20s infinite alternate;
 }
-
 .blob:nth-child(2) {
   background: rgba(16, 185, 129, 0.15);
   width: 400px;
@@ -50,19 +52,20 @@ body {
   animation-duration: 15s;
   animation-delay: -5s;
 }
-
 @keyframes move {
-  from { transform: translate(-10%, -10%) rotate(0deg); }
-  to { transform: translate(20%, 20%) rotate(360deg); }
+  from {
+    transform: translate(-10%, -10%) rotate(0deg);
+  }
+  to {
+    transform: translate(20%, 20%) rotate(360deg);
+  }
 }
 
-/* --- Typography & Global --- */
 h1 {
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   font-size: 28px;
   color: var(--text-main);
 }
-
 .top-nav {
   display: flex;
   justify-content: space-between;
@@ -70,49 +73,36 @@ h1 {
   font-size: 14px;
   color: var(--text-muted);
 }
-
 .top-nav ul {
   display: flex;
   gap: 24px;
   list-style: none;
 }
-
 .top-nav a {
   text-decoration: none;
   color: inherit;
   font-weight: 500;
   transition: color 0.3s;
 }
-
-.top-nav a:hover {
+.top-nav a:hover,
+.top-nav a.active-nav {
   color: var(--text-main);
+  font-weight: 600;
 }
-
 .app-container {
   max-width: 900px;
   margin: 0 auto;
   padding: 20px;
 }
-
 .page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 24px;
 }
-
 .subtitle {
   color: var(--text-muted);
   font-size: 14px;
   margin-top: 4px;
 }
 
-.header-actions {
-  display: flex;
-  gap: 12px;
-}
-
-/* --- Glass Cards --- */
 .card {
   background: var(--card-bg);
   border-radius: 30px;
@@ -122,14 +112,9 @@ h1 {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
-
 .card-header-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px 30px 0 30px;
+  padding: 30px 30px 10px 30px;
 }
-
 .card-section-title {
   font-size: 11px;
   color: var(--text-muted);
@@ -137,128 +122,44 @@ h1 {
   text-transform: uppercase;
 }
 
-.card-section-title.no-border {
-  border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
-.active-status {
-  font-size: 13px;
-  color: var(--text-muted);
+.form-row {
   display: flex;
-  align-items: center;
-  gap: 6px;
+  gap: 24px;
+  padding: 10px 30px 20px 30px;
 }
-
-.active-status::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  background: var(--green-primary);
-  border-radius: 50%;
-}
-
-/* --- Form Layout --- */
-.section-divider {
+.form-group {
+  flex: 1;
   display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 30px;
+  flex-direction: column;
+  gap: 8px;
 }
-
-.section-divider span {
+.form-group label {
   font-size: 11px;
-  color: var(--text-muted);
-  letter-spacing: 1px;
-  white-space: nowrap;
-}
-
-.section-divider hr {
-  flex-grow: 1;
-  border: none;
-  border-top: 1px solid var(--border-color);
-}
-
-.form-row-horizontal {
-  display: flex;
-  padding: 0 30px 24px 30px;
-}
-
-.form-row-horizontal label {
-  width: 30%;
-  font-size: 14px;
   font-weight: 600;
   color: var(--text-muted);
-  padding-top: 10px;
+  letter-spacing: 0.5px;
 }
-
-.form-row-horizontal .input-wrapper {
-  width: 70%;
-}
-
-.required {
-  color: var(--red-error);
-}
-
-/* --- Translucent Inputs --- */
-input[type="text"], select {
-  width: 100%;
+.form-group input,
+.form-group select {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-color);
   padding: 12px;
   border-radius: 8px;
   font-size: 14px;
-  font-family: inherit;
   outline: none;
+  font-family: inherit;
   color: var(--text-main);
-  transition: border-color 0.2s, background 0.2s;
+  transition: border-color 0.2s;
 }
-
-input:focus, select:focus {
+.form-group input:focus,
+.form-group select:focus {
   border-color: var(--accent);
   background: rgba(255, 255, 255, 0.1);
 }
-
-select option {
-  background: var(--bg-color); /* Prevents transparent options bug */
+.form-group select option {
+  background: var(--bg-color);
 }
 
-.helper-text {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-top: 8px;
-}
-
-/* --- Info Box Styles --- */
-.info-box {
-  background-color: rgba(255, 255, 255, 0.02);
-  border: 1px dashed rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  padding: 20px;
-  margin: 0 30px 30px 30px;
-  display: flex;
-  gap: 16px;
-  color: var(--text-muted);
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.info-icon {
-  width: 20px;
-  height: 20px;
-  border: 1px solid var(--text-muted);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: bold;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-/* --- Footer & Buttons --- */
 .form-footer {
   display: flex;
   justify-content: space-between;
@@ -267,52 +168,66 @@ select option {
   background-color: rgba(0, 0, 0, 0.2);
   border-top: 1px solid var(--border-color);
 }
-
 .footer-actions {
   display: flex;
   gap: 12px;
 }
+.helper-text {
+  font-size: 13px;
+  color: var(--text-muted);
+}
 
 button {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 14px;
   font-weight: 600;
   padding: 10px 18px;
   border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.2s, background 0.2s;
+  border: none;
+  transition: transform 0.2s;
 }
-
 button:active {
   transform: scale(0.98);
 }
-
 .btn-outline {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-color);
   color: var(--text-main);
 }
-
 .btn-outline:hover {
   background: rgba(255, 255, 255, 0.1);
 }
-
-.btn-danger-outline {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  color: var(--red-error);
-}
-
-.btn-danger-outline:hover {
-  background: rgba(239, 68, 68, 0.2);
-}
-
-.btn-dark {
+.btn-accent {
   background: rgba(56, 189, 248, 0.15);
   color: var(--accent);
   border: 1px solid rgba(56, 189, 248, 0.3);
 }
-
-.btn-dark:hover {
+.btn-accent:hover {
   background: rgba(56, 189, 248, 0.25);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.data-table th {
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--text-muted);
+  font-size: 11px;
+  padding: 16px 30px;
+  border-bottom: 1px solid var(--border-color);
+}
+.data-table td {
+  padding: 16px 30px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 14px;
+  color: var(--text-main);
+}
+.text-red {
+  color: var(--red-error);
+}
+.text-green {
+  color: var(--green-primary);
 }

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products | Core Inventory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="../static/product.css">
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- animated background -->
+<div class="liquid-bg">
+    <div class="blob"></div>
+    <div class="blob"></div>
+</div>
+
+<!-- navigation -->
+<nav class="top-nav">
+
+    <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="operations.html">Operations</a></li>
+        <li><a href="products.html" class="active">Products</a></li>
+        <li><a href="history.html">Move History</a></li>
+        <li><a href="settings.html">Settings</a></li>
+    </ul>
+
+    <span class="profile">
+        <a href="profile.html">Profile</a>
+    </span>
+
+</nav>
+
+
+<main class="container">
+
+    <div class="page-title">
+        <h1>Product Management</h1>
+        <p>Create and manage products</p>
+    </div>
+
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="card-header">
+                <h2>Create Product</h2>
+            </div>
+
+            <div class="card-body">
+
+                <form class="product-form">
+
+                    <label>Product Name</label>
+                    <input type="text" placeholder="Enter product name">
+
+                    <label>SKU / Code</label>
+                    <input type="text" placeholder="Example PRD-101">
+
+                    <label>Category</label>
+                    <select>
+                        <option>Select category</option>
+                        <option>Raw Materials</option>
+                        <option>Finished Goods</option>
+                        <option>Hardware</option>
+                    </select>
+
+                    <label>Unit of Measure</label>
+                    <select>
+                        <option>Units</option>
+                        <option>Kg</option>
+                        <option>Liters</option>
+                        <option>Packs</option>
+                    </select>
+
+                    <label>Initial Stock (optional)</label>
+                    <input type="number" placeholder="0">
+
+                    <button type="submit" class="btn">Create Product</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+</body>
+</html>

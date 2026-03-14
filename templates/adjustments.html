@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adjustments - Core Inventory</title>
+  <link rel="stylesheet" href="../static/adjustments.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="liquid-bg">
+    <div class="blob"></div>
+    <div class="blob"></div>
+  </div>
+
+  <nav class="top-nav">
+    <ul>
+      <li><a href="./dashboard.html">Dashboard</a></li>
+      <li><a href="./operations.html" class="active-nav">Operations</a></li>
+      <li><a href="./products.html">Products</a></li>
+      <li><a href="./history.html">Move History</a></li>
+      <li><a href="./settings.html">Settings</a></li>
+    </ul>
+    <span><a href="./profile.html">Profile</a></span>
+  </nav>
+
+  <main class="app-container">
+    <header class="page-header">
+      <div class="header-titles">
+        <h1>Inventory Adjustments</h1>
+        <p class="subtitle">Correct stock mismatches based on physical counts</p>
+      </div>
+    </header>
+
+    <div class="card form-card">
+      <div class="card-header-flex">
+        <h3 class="card-section-title no-border">NEW ADJUSTMENT</h3>
+      </div>
+      <form id="adjustment-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>PRODUCT</label>
+            <select id="adj-product" required>
+              <option value="" disabled selected>Select a product...</option>
+              <option value="DESK001" data-stock="50">Desk [DESK001]</option>
+              <option value="TABL002" data-stock="35">Table [TABL002]</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>LOCATION</label>
+            <select id="adj-location" required>
+              <option value="WH_MAIN">WH — Main Warehouse</option>
+              <option value="WH_A1">Shelf A1</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>RECORDED QUANTITY</label>
+            <input type="number" id="adj-recorded" readonly placeholder="Auto-filled" style="opacity: 0.7;">
+          </div>
+          <div class="form-group">
+            <label>ACTUAL COUNTED QUANTITY</label>
+            <input type="number" id="adj-actual" placeholder="Enter physical count" required>
+          </div>
+        </div>
+        <div class="form-footer">
+          <div class="footer-left">
+            <p id="difference-text" class="helper-text">Difference: <span id="adj-diff">0</span></p>
+          </div>
+          <div class="footer-actions">
+            <button type="button" class="btn-outline" onclick="document.getElementById('adjustment-form').reset()">Clear</button>
+            <button type="submit" class="btn-accent">Apply Adjustment</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="card list-card" style="margin-top: 24px;">
+      <div class="card-header-flex">
+        <h3 class="card-section-title no-border">RECENT ADJUSTMENTS</h3>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>DATE</th>
+            <th>PRODUCT</th>
+            <th>LOCATION</th>
+            <th>PREVIOUS</th>
+            <th>NEW COUNT</th>
+            <th>DIFFERENCE</th>
+          </tr>
+        </thead>
+        <tbody id="adj-history-body">
+          </tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="../static/adjustments.js"></script>
+</body>
+</html>

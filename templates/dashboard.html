@@ -8,6 +8,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="liquid-bg">
+    <div class="blob"></div>
+    <div class="blob"></div>
+  </div>
+
   <nav class="top-nav">
     <ul>
       <li><a href="./dashboard.html" class="active-nav">Dashboard</a></li>
@@ -23,58 +28,118 @@
     <header class="page-header">
       <div class="header-titles">
         <h1>Dashboard</h1>
-        <p class="subtitle">Overview of inventory operations</p>
+        <p class="subtitle">Overview of inventory operations and KPIs</p>
       </div>
     </header>
 
-<div class="dashboard-grid">
-      <div class="card dash-card">
-        <div class="card-header">
-          <h2>Receipts</h2>
-          <span class="icon-placeholder">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          </span>
-        </div>
-        <div class="card-body">
-          <button id="btn-receipts" class="btn-dark full-width large-btn">0 To Receive</button>
-        </div>
-        <div class="card-footer">
-          <div class="stat-item">
-            <span id="stat-receipt-late" class="stat-value text-red">0</span>
-            <span class="stat-label">Late</span>
+    <div class="card filter-bar">
+      <div class="filter-group">
+        <label>Document Type</label>
+        <select id="filter-doc" class="filter-select">
+          <option value="all">All Documents</option>
+          <option value="receipts">Receipts</option>
+          <option value="delivery">Delivery</option>
+          <option value="internal">Internal Transfers</option>
+          <option value="adjustments">Adjustments</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Status</label>
+        <select id="filter-status" class="filter-select">
+          <option value="all">All Statuses</option>
+          <option value="draft">Draft</option>
+          <option value="waiting">Waiting</option>
+          <option value="ready">Ready</option>
+          <option value="done">Done</option>
+          <option value="canceled">Canceled</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Location</label>
+        <select id="filter-location" class="filter-select">
+          <option value="all">All Warehouses</option>
+          <option value="wh_main">Main Storage</option>
+          <option value="wh_sec">Section B</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Category</label>
+        <select id="filter-category" class="filter-select">
+          <option value="all">All Categories</option>
+          <option value="furniture">Furniture</option>
+          <option value="raw_materials">Raw Materials</option>
+          <option value="electronics">Electronics</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="dashboard-grid">
+      
+      <div class="card kpi-card">
+        <div class="kpi-header">
+          <div class="icon-box default-glow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
           </div>
-          <div class="stat-item">
-            <span id="stat-receipt-ops" class="stat-value">0</span>
-            <span class="stat-label">Operations</span>
-          </div>
+          <h3 class="kpi-title">Total Products</h3>
+        </div>
+        <div class="kpi-body">
+          <span class="kpi-value" id="kpi-total-products">0</span>
+          <span class="kpi-label">In Stock</span>
         </div>
       </div>
 
-      <div class="card dash-card">
-        <div class="card-header">
-          <h2>Deliveries</h2>
-          <span class="icon-placeholder">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 14l-5-5-5 5M12 9v12"/></svg>
-          </span>
+      <div class="card kpi-card">
+        <div class="kpi-header">
+          <div class="icon-box red-glow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          </div>
+          <h3 class="kpi-title">Alerts</h3>
         </div>
-        <div class="card-body">
-          <button id="btn-deliveries" class="btn-green full-width large-btn">0 To Deliver</button>
-        </div>
-        <div class="card-footer">
-          <div class="stat-item">
-            <span id="stat-delivery-late" class="stat-value text-red">0</span>
-            <span class="stat-label">Late</span>
-          </div>
-          <div class="stat-item">
-            <span id="stat-delivery-waiting" class="stat-value">0</span>
-            <span class="stat-label">Waiting</span>
-          </div>
-          <div class="stat-item">
-            <span id="stat-delivery-ops" class="stat-value">0</span>
-            <span class="stat-label">Operations</span>
-          </div>
+        <div class="kpi-body">
+          <span class="kpi-value text-red" id="kpi-low-stock">0</span>
+          <span class="kpi-label">Low / Out of Stock</span>
         </div>
       </div>
+
+      <div class="card kpi-card">
+        <div class="kpi-header">
+          <div class="icon-box green-glow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </div>
+          <h3 class="kpi-title">Receipts</h3>
+        </div>
+        <div class="kpi-body">
+          <span class="kpi-value text-green" id="kpi-receipts">0</span>
+          <span class="kpi-label">Pending</span>
+        </div>
+      </div>
+
+      <div class="card kpi-card">
+        <div class="kpi-header">
+          <div class="icon-box accent-glow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 14l-5-5-5 5M12 9v12"/></svg>
+          </div>
+          <h3 class="kpi-title">Deliveries</h3>
+        </div>
+        <div class="kpi-body">
+          <span class="kpi-value text-accent" id="kpi-deliveries">0</span>
+          <span class="kpi-label">Pending</span>
+        </div>
+      </div>
+
+      <div class="card kpi-card">
+        <div class="kpi-header">
+          <div class="icon-box purple-glow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+          </div>
+          <h3 class="kpi-title">Transfers</h3>
+        </div>
+        <div class="kpi-body">
+          <span class="kpi-value text-purple" id="kpi-transfers">0</span>
+          <span class="kpi-label">Scheduled</span>
+        </div>
+      </div>
+
     </div>
   </main>
 

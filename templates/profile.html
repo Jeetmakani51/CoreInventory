@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - Core Inventory</title>
+  <link rel="stylesheet" href="../static/profile.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="liquid-bg">
+    <div class="blob"></div>
+    <div class="blob"></div>
+  </div>
+
+  <nav class="top-nav">
+    <ul>
+      <li><a href="./dashboard.html">Dashboard</a></li>
+      <li><a href="./operations.html">Operations</a></li>
+      <li><a href="./products.html">Products</a></li>
+      <li><a href="./history.html">Move History</a></li>
+      <li><a href="./settings.html">Settings</a></li>
+    </ul>
+    <span><a href="./profile.html" class="active-nav">Profile</a></span>
+  </nav>
+
+  <main class="app-container">
+    <div class="profile-wrapper">
+      <div class="card profile-card">
+        
+        <div class="avatar-circle">
+          <span id="avatar-initials">U</span>
+        </div>
+
+        <h2 id="user-name">User Account</h2>
+        <p id="user-email" class="subtitle">loading...</p>
+
+        <div class="profile-details">
+          <div class="detail-row">
+            <span>Role</span>
+            <strong>Administrator</strong>
+          </div>
+          <div class="detail-row">
+            <span>Authentication</span>
+            <strong id="auth-type">Standard</strong>
+          </div>
+        </div>
+
+        <button id="btn-logout" class="btn-danger full-width">Sign Out</button>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="../static/profile.js"></script>
+</body>
+</html>

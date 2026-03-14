@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Move History - Core Inventory</title>
+  <link rel="stylesheet" href="../static/history.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="liquid-bg">
+    <div class="blob"></div>
+    <div class="blob"></div>
+  </div>
+
+  <nav class="top-nav">
+    <ul>
+      <li><a href="./dashboard.html">Dashboard</a></li>
+      <li><a href="./operations.html">Operations</a></li>
+      <li><a href="./products.html">Products</a></li>
+      <li><a href="./history.html" class="active-nav">Move History</a></li>
+      <li><a href="./settings.html">Settings</a></li>
+    </ul>
+    <span><a href="./profile.html">Profile</a></span>
+  </nav>
+
+  <main class="app-container">
+    <header class="page-header">
+      <div class="header-titles">
+        <h1>Move History</h1>
+        <p class="subtitle">Log of all stock transfers and adjustments</p>
+      </div>
+      <div class="header-actions">
+        <button id="btn-export" class="btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Export
+        </button>
+        <button id="btn-new" class="btn-accent">+ New Move</button>
+      </div>
+    </header>
+
+    <div class="card list-card">
+      <div class="card-toolbar">
+        <input type="text" id="search-bar" class="search-bar" placeholder="Search reference, contact, or location...">
+        <span class="record-count">0 records</span>
+      </div>
+      
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>REFERENCE</th>
+            <th>DATE</th>
+            <th>CONTACT</th>
+            <th>FROM</th>
+            <th>TO</th>
+            <th>QUANTITY</th>
+            <th>STATUS</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          </tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="../static/history.js"></script>
+</body>
+</html>

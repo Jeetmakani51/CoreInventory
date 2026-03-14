@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Authentication</title>
+  <title>Authentication - Core Inventory</title>
   <link rel="stylesheet" href="../static/auth.css">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="liquid-bg">
+    <div class="blob"></div>
+    <div class="blob"></div>
+  </div>
+
   <div class="auth-wrapper">
-    <div class="auth-card">
-      <div class="app-logo">App Logo</div>
+    <div class="card auth-card">
+      <div class="app-logo">Core Inventory</div>
 
       <form id="login-form" class="active">
         <h2>Welcome Back</h2>
@@ -91,6 +96,7 @@
 
     </div>
   </div>
+
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script src="../static/auth.js"></script>
 </body>

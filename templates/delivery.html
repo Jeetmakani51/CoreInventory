@@ -3,11 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Delivery</title>
+  <title>Delivery - Core Inventory</title>
   <link rel="stylesheet" href="../static/delivery.css">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="liquid-bg">
+    <div class="blob"></div>
+    <div class="blob"></div>
+  </div>
+
   <nav class="top-nav">
     <ul>
       <li><a href="./dashboard.html">Dashboard</a></li>
@@ -29,8 +34,10 @@
         </div>
         <div class="header-actions">
           <button id="toggle-filter" class="btn-outline view-btn">Filter</button>
-          <button id="toggle-grid" class="btn-outline view-btn icon-btn">grid</button>
-          <button id="btn-new" class="btn-dark">+ New</button>
+          <button id="toggle-grid" class="btn-outline view-btn icon-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          </button>
+          <button id="btn-new" class="btn-accent">+ New</button>
         </div>
       </header>
 
@@ -148,7 +155,7 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong>[DESK001]</strong> Desk</td>
+              <td><strong class="text-accent">[DESK001]</strong> Desk</td>
               <td class="text-muted">Standard office desk</td>
               <td><span class="qty-badge">6</span></td>
               <td>—</td>

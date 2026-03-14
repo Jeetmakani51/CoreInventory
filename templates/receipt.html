@@ -1,105 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Receipts Dashboard</title>
-
-    <link rel="stylesheet" href="../static/receipt.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receipts - Core Inventory</title>
+  <link rel="stylesheet" href="../static/receipt.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
+  <div class="liquid-bg">
+    <div class="blob"></div>
+    <div class="blob"></div>
+  </div>
 
-    <div class="container">
+  <nav class="top-nav">
+    <ul>
+      <li><a href="./dashboard.html">Dashboard</a></li>
+      <li><a href="./operations.html" class="active-nav">Operations</a></li>
+      <li><a href="./products.html">Products</a></li>
+      <li><a href="./history.html">Move History</a></li>
+      <li><a href="./settings.html">Settings</a></li>
+    </ul>
+    <span><a href="./profile.html">Profile</a></span>
+  </nav>
 
-        <nav class="navbar">
-            <div>Dashboard</div>
-            <div>Operations</div>
-            <div>Products</div>
-            <div>Move History</div>
-            <div>Settings</div>
-        </nav>
+  <main class="app-container">
+    <header class="page-header">
+      <div class="header-titles">
+        <h1>Receipts</h1>
+        <p class="subtitle">Incoming goods and supplier deliveries</p>
+      </div>
+      <div class="header-actions">
+        <button id="toggle-filter" class="btn-outline view-btn">Filter</button>
+        <button id="toggle-grid" class="btn-outline view-btn icon-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        </button>
+        <button id="btn-new" class="btn-accent">+ New Receipt</button>
+      </div>
+    </header>
 
+    <div class="card list-card">
+      <div class="card-toolbar">
+        <input type="text" id="search-bar" class="search-bar" placeholder="Search receipts, suppliers...">
+        <span class="record-count">0 records</span>
+      </div>
 
-        <header class="header">
-
-            <div class="title">
-                <button class="newbtn">NEW</button>
-                <h2>Receipts</h2>
-            </div>
-
-            <div class="buttons">
-                <div class="btn">🔍</div>
-                <div class="btn">☰</div>
-                <div class="btn">📦</div>
-                <div class="btn">📊</div>
-                <div class="btn">⚙</div>
-            </div>
-
-        </header>
-
-
-        <main>
-
-            <table>
-
-                <thead>
-                    <tr>
-                        <th>Reference</th>
-                        <th>Supplier</th>
-                        <th>Warehouse</th>
-                        <th>Contact</th>
-                        <th>Delivery Date</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <td>RCPT-101</td>
-                        <td>Global Traders</td>
-                        <td>Main Storage</td>
-                        <td>Rahul Mehta</td>
-                        <td>12 Apr 2026</td>
-                        <td>
-                            <span class="status">Completed</span>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>RCPT-102</td>
-                        <td>Skyline Imports</td>
-                        <td>Section B</td>
-                        <td>Anita Shah</td>
-                        <td>14 Apr 2026</td>
-                        <td>
-                            <span class="status pending">Pending</span>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>RCPT-103</td>
-                        <td>Metro Supplies</td>
-                        <td>Warehouse 2</td>
-                        <td>Rohan Patel</td>
-                        <td>16 Apr 2026</td>
-                        <td>
-                            <span class="status">Completed</span>
-                        </td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </main>
-
-
-        <footer class="note">
-            All receipts are automatically updated when goods arrive at the warehouse.
-        </footer>
-
+      <table id="data-table" class="data-table">
+        <thead>
+          <tr>
+            <th>REFERENCE</th>
+            <th>SUPPLIER</th>
+            <th>WAREHOUSE</th>
+            <th>CONTACT</th>
+            <th>DELIVERY DATE</th>
+            <th>STATUS</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          </tbody>
+      </table>
+      
+      <div class="table-footer">
+        <p class="text-muted" style="font-size: 13px;">All receipts are automatically updated when goods arrive at the warehouse.</p>
+      </div>
     </div>
+  </main>
+
+  <script src="../static/receipt.js"></script>
 </body>
 </html>
