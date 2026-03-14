@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Receipts Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='receipt.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <nav class="navbar">
+            <div>Dashboard</div>
+            <div>Operations</div>
+            <div>Products</div>
+            <div>Move History</div>
+            <div>Settings</div>
+        </nav>
+
+
+        <header class="header">
+
+            <div class="title">
+                <button class="newbtn">NEW</button>
+                <h2>Receipts</h2>
+            </div>
+
+            <div class="buttons">
+                <div class="btn">🔍</div>
+                <div class="btn">☰</div>
+                <div class="btn">📦</div>
+                <div class="btn">📊</div>
+                <div class="btn">⚙</div>
+            </div>
+
+        </header>
+
+
+        <main>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Reference</th>
+                        <th>Supplier</th>
+                        <th>Warehouse</th>
+                        <th>Contact</th>
+                        <th>Delivery Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>RCPT-101</td>
+                        <td>Global Traders</td>
+                        <td>Main Storage</td>
+                        <td>Rahul Mehta</td>
+                        <td>12 Apr 2026</td>
+                        <td>
+                            <span class="status">Completed</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>RCPT-102</td>
+                        <td>Skyline Imports</td>
+                        <td>Section B</td>
+                        <td>Anita Shah</td>
+                        <td>14 Apr 2026</td>
+                        <td>
+                            <span class="status pending">Pending</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>RCPT-103</td>
+                        <td>Metro Supplies</td>
+                        <td>Warehouse 2</td>
+                        <td>Rohan Patel</td>
+                        <td>16 Apr 2026</td>
+                        <td>
+                            <span class="status">Completed</span>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </main>
+
+
+        <footer class="note">
+            All receipts are automatically updated when goods arrive at the warehouse.
+        </footer>
+
+    </div>
+</body>
+</html>
