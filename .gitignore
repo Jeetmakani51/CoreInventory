@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependency directories
 node_modules/
 
@@ -28,3 +29,22 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+=======
+# Virtual Environment
+env/
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+>>>>>>> dbba0c1e4a3a55047bfa425d4abaca7f122f3c06
