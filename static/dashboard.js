@@ -1,32 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
-  
-  // Simulated data payload from your Flask backend
-  const dashboardData = {
-    totalProducts: 1254,
-    lowStock: 18,
-    pendingReceipts: 7,
-    pendingDeliveries: 12,
-    internalTransfers: 3
-  };
 
-  // Function to populate the dashboard KPIs
+  // Function to populate the dashboard KPIs in the HTML
   const populateKPIs = (data) => {
-    document.getElementById('kpi-total-products').textContent = data.totalProducts;
-    document.getElementById('kpi-low-stock').textContent = data.lowStock;
-    document.getElementById('kpi-receipts').textContent = data.pendingReceipts;
-    document.getElementById('kpi-deliveries').textContent = data.pendingDeliveries;
-    document.getElementById('kpi-transfers').textContent = data.internalTransfers;
+    document.getElementById('kpi-total-products').textContent = data.totalProducts || 0;
+    document.getElementById('kpi-low-stock').textContent = data.lowStock || 0;
+    document.getElementById('kpi-receipts').textContent = data.pendingReceipts || 0;
+    document.getElementById('kpi-deliveries').textContent = data.pendingDeliveries || 0;
+    document.getElementById('kpi-transfers').textContent = data.internalTransfers || 0;
   };
 
-  // Initial Load
-  populateKPIs(dashboardData);
+  // --- Backend API Integration ---
+  // Fetch real data from your Flask app
+  fetch('/api/dashboard')
+    .then(response => response.json())
+    .then(data => {
+      populateKPIs(data);
+    })
+    .catch(error => {
+      console.error("Error fetching dashboard stats:", error);
+    });
 
-  // Dynamic Filters Logic
+  // --- Dynamic Filters Logic ---
   const filterSelects = document.querySelectorAll('.filter-select');
   
   filterSelects.forEach(select => {
     select.addEventListener('change', () => {
-      // Collect all current filter values
+      // In the future, you can attach these filter values to the fetch URL 
+      // e.g., fetch(`/api/dashboard?location=${locationValue}`)
       const filters = {
         docType: document.getElementById('filter-doc').value,
         status: document.getElementById('filter-status').value,
@@ -34,19 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         category: document.getElementById('filter-category').value
       };
 
-      console.log("Filters updated. Fetching new data...", filters);
-
-      // Simulate an API call fetching new filtered data
-      // In production, this will be: fetch(`/api/dashboard?location=${filters.location}...`)
-      const simulatedFilteredData = {
-        totalProducts: Math.floor(Math.random() * 1000) + 100,
-        lowStock: Math.floor(Math.random() * 20),
-        pendingReceipts: Math.floor(Math.random() * 10),
-        pendingDeliveries: Math.floor(Math.random() * 15),
-        internalTransfers: Math.floor(Math.random() * 5)
-      };
-
-      populateKPIs(simulatedFilteredData);
+      console.log("Filters changed, ready to fetch new data...", filters);
     });
   });
 

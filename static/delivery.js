@@ -1,14 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // --- Simulated Database ---
-  let deliveries = [
-    { ref: 'WH/OUT/0001', from: 'WH/Stock1', to: 'Vendor', contact: 'Azure Interior', date: '—', status: 'Ready' },
-    { ref: 'WH/OUT/0002', from: 'WH/Stock1', to: 'Vendor', contact: 'Azure Interior', date: '—', status: 'Ready' }
-  ];
-
+  let deliveries = [];
   let currentEditingRef = null;
   let isGridView = false;
 
-  // --- UI Elements ---
   const listView = document.getElementById('list-view');
   const detailsView = document.getElementById('details-view');
   const tableBody = document.getElementById('table-body');
@@ -16,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const gridContainer = document.getElementById('grid-container');
   const recordCount = document.querySelector('.record-count');
   
-  // Controls
   const searchInput = document.getElementById('search-bar');
   const toggleFilterBtn = document.getElementById('toggle-filter');
   const filterPanel = document.getElementById('filter-panel');
@@ -25,16 +18,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const validateBtn = document.getElementById('validate-btn');
   const checkboxes = document.querySelectorAll('.status-filter');
 
+  // --- Backend API Integration ---
+  async function loadDeliveries() {
+    try {
+      const response = await fetch('/api/deliveries');
+      const data = await response.json();
+      deliveries = data.map(d => ({
+        id: d.id,
+        ref: d.reference,
+        from: d.from_location,
+        to: d.to_location,
+        contact: d.contact,
+        date: d.scheduled_date,
+        status: d.status
+      }));
+      renderUI();
+    } catch (error) {
+      console.error("Failed to load deliveries:", error);
+    }
+  }
+
   // --- Render Functions ---
   const renderUI = () => {
     const searchTerm = searchInput.value.toLowerCase();
-    
-    // Get active filters
-    const activeFilters = Array.from(checkboxes)
-      .filter(cb => cb.checked)
-      .map(cb => cb.value.toLowerCase());
+    const activeFilters = Array.from(checkboxes).filter(cb => cb.checked).map(cb => cb.value.toLowerCase());
 
-    // Filter the data
     const filteredData = deliveries.filter(item => {
       const matchesSearch = item.ref.toLowerCase().includes(searchTerm) || item.contact.toLowerCase().includes(searchTerm);
       const matchesFilter = activeFilters.includes(item.status.toLowerCase());
@@ -46,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
     gridContainer.innerHTML = '';
 
     filteredData.forEach(item => {
-      // Create Table Row
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td><span class="ref-badge ref-link" onclick="editRecord('${item.ref}')">${item.ref}</span></td>
@@ -58,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       tableBody.appendChild(tr);
 
-      // Create Kanban Card
       const card = document.createElement('div');
       card.className = 'kanban-card';
       card.innerHTML = `
@@ -72,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
       gridContainer.appendChild(card);
     });
 
-    // Handle View State
     if (isGridView) {
       dataTable.style.display = 'none';
       gridContainer.style.display = 'grid';
@@ -84,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Make editRecord globally available for inline onclick attributes
+  // --- Edit Delivery ---
   window.editRecord = (ref) => {
     currentEditingRef = ref;
     const record = deliveries.find(d => d.ref === ref);
@@ -92,14 +97,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.current-ref').textContent = ref;
     document.querySelector('.ref-title').textContent = ref;
     
-    // Populate form
     document.getElementById('input-contact').value = record.contact;
     document.getElementById('input-from').value = record.from;
     document.getElementById('input-to').value = record.to;
     document.getElementById('input-date').value = record.date === '—' ? '' : record.date;
     
     updateStatusVisuals(record.status);
-    
     listView.style.display = 'none';
     detailsView.style.display = 'block';
   };
@@ -107,12 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeDetails = () => {
     listView.style.display = 'block';
     detailsView.style.display = 'none';
-    renderUI();
+    loadDeliveries();
   };
 
   // --- Event Listeners ---
-  
-  // Search & Filter
   searchInput.addEventListener('input', renderUI);
   checkboxes.forEach(cb => cb.addEventListener('change', renderUI));
 
@@ -125,44 +126,46 @@ document.addEventListener('DOMContentLoaded', () => {
     renderUI();
   });
 
-  // Add New Record Flow
   btnNew.addEventListener('click', () => {
     currentEditingRef = 'NEW';
     document.querySelector('.current-ref').textContent = 'New Delivery';
     document.querySelector('.ref-title').textContent = 'Draft Delivery';
     
-    // Clear form
     document.querySelectorAll('.form-card input').forEach(input => input.value = '');
     updateStatusVisuals('Draft');
-    
     listView.style.display = 'none';
     detailsView.style.display = 'block';
   });
 
-  // Validate / Save Button
+  // --- Backend API Integration (Save) ---
   validateBtn.addEventListener('click', () => {
     const contact = document.getElementById('input-contact').value || 'Unknown Contact';
     const from = document.getElementById('input-from').value || 'WH/Stock';
     const to = document.getElementById('input-to').value || 'Customer';
     const date = document.getElementById('input-date').value || '—';
-    const activeStatusNode = document.querySelector('.status-step.active');
-    const status = activeStatusNode ? activeStatusNode.dataset.status : 'Ready';
 
     if (currentEditingRef === 'NEW') {
-      // Generate ID and push to array
-      const newId = `WH/OUT/000${deliveries.length + 1}`;
-      deliveries.unshift({ ref: newId, from, to, contact, date, status });
+      fetch('/api/delivery/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          reference: 'WH/OUT/' + Date.now(),
+          from: from,
+          to: to,
+          contact: contact,
+          date: date,
+          items: []
+        })
+      })
+      .then(res => res.json())
+      .then(() => {
+        closeDetails();
+      });
     } else {
-      // Update existing record
-      const recordIndex = deliveries.findIndex(d => d.ref === currentEditingRef);
-      if (recordIndex > -1) {
-        deliveries[recordIndex] = { ...deliveries[recordIndex], contact, from, to, date, status };
-      }
+       closeDetails();
     }
-    closeDetails();
   });
 
-  // Print & Cancel
   document.getElementById('print-btn').addEventListener('click', () => window.print());
   document.getElementById('cancel-btn').addEventListener('click', closeDetails);
   document.querySelectorAll('.back-link').forEach(link => link.addEventListener('click', (e) => {
@@ -170,7 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
     closeDetails();
   }));
 
-  // Status Segments Logic
   function updateStatusVisuals(statusName) {
     const steps = document.querySelectorAll('.status-step');
     steps.forEach(step => {
@@ -185,14 +187,13 @@ document.addEventListener('DOMContentLoaded', () => {
     step.addEventListener('click', () => updateStatusVisuals(step.dataset.status));
   });
 
-  // Add Product Button
   document.getElementById('add-product-btn').addEventListener('click', () => {
     const tbody = document.querySelector('.products-table tbody');
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td><input type="text" placeholder="Product Code" style="border:none; outline:none; background:transparent;"></td>
-      <td><input type="text" placeholder="Description" style="border:none; outline:none; background:transparent;"></td>
-      <td><input type="number" value="1" style="width:50px; background:#e0e0e0; border:none; border-radius:4px; padding:2px 8px;"></td>
+      <td><input type="text" placeholder="Product Code" style="border:none; outline:none; background:transparent; color:white;"></td>
+      <td><input type="text" placeholder="Description" style="border:none; outline:none; background:transparent; color:white;"></td>
+      <td><input type="number" value="1" style="width:50px; background:rgba(255,255,255,0.1); border:none; border-radius:4px; padding:2px 8px; color:white;"></td>
       <td>—</td>
     `;
     tbody.appendChild(tr);
@@ -200,5 +201,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize
   filterPanel.style.display = 'none';
-  renderUI();
+  loadDeliveries();
 });
