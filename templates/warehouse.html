@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warehouse - Inventory</title>
+  <link rel="stylesheet" href="../static/warehouse.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="top-nav">
+    <ul>
+      <li><a href="./dashboard.html">Dashboard</a></li>
+      <li><a href="./operations.html">Operations</a></li>
+      <li><a href="./products.html">Products</a></li>
+      <li><a href="./history.html">Move History</a></li>
+      <li><a href="./settings.html">Settings</a></li>
+    </ul>
+    <span><a href="./profile.html">Profile</a></span>
+  </nav>
+
+  <main class="app-container">
+    <header class="page-header">
+      <div class="header-titles">
+        <h1>Warehouse</h1>
+        <p class="subtitle">Configure warehouse settings and location</p>
+      </div>
+    </header>
+
+    <div class="card form-card warehouse-card">
+      <div class="card-header-flex">
+        <h3 class="card-section-title no-border">WAREHOUSE DETAILS</h3>
+        <span class="status-badge active-status">Active</span>
+      </div>
+
+      <form id="warehouse-form">
+        <div class="section-divider">
+          <span>GENERAL INFORMATION</span>
+          <hr>
+        </div>
+
+        <div class="form-row-horizontal">
+          <label for="wh-name">Name <span class="required">*</span></label>
+          <div class="input-wrapper">
+            <input type="text" id="wh-name" placeholder="e.g. Main Warehouse" required>
+          </div>
+        </div>
+
+        <div class="form-row-horizontal">
+          <label for="wh-code">Short Code <span class="required">*</span></label>
+          <div class="input-wrapper">
+            <input type="text" id="wh-code" placeholder="E.G. WH" maxlength="5" required>
+            <p class="helper-text">Max 5 characters. Used as prefix in reference numbers.</p>
+          </div>
+        </div>
+
+        <div class="form-row-horizontal">
+          <label for="wh-address">Address</label>
+          <div class="input-wrapper">
+            <textarea id="wh-address" rows="3" placeholder="Street, City, State, ZIP..."></textarea>
+          </div>
+        </div>
+
+        <div class="section-divider">
+          <span>OPERATIONS</span>
+          <hr>
+        </div>
+
+        <div class="form-row-horizontal">
+          <label for="wh-company">Default Company</label>
+          <div class="input-wrapper">
+            <select id="wh-company">
+              <option value="" disabled selected>Select company...</option>
+              <option value="1">YourCompany Inc.</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-horizontal">
+          <label for="wh-inbound">Inbound Route</label>
+          <div class="input-wrapper">
+            <select id="wh-inbound">
+              <option value="1step">Receive in one step</option>
+              <option value="2step">Receive in two steps (Input + Stock)</option>
+            </select>
+            <p class="helper-text">How incoming shipments are processed.</p>
+          </div>
+        </div>
+
+        <div class="form-row-horizontal">
+          <label for="wh-outbound">Outbound Route</label>
+          <div class="input-wrapper">
+            <select id="wh-outbound">
+              <option value="1step">Ship in one step</option>
+              <option value="2step">Pick + Ship</option>
+            </select>
+            <p class="helper-text">How outgoing deliveries are handled.</p>
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <div class="footer-left">
+            <p class="helper-text">Fields marked <span class="required">*</span> are required</p>
+          </div>
+          <div class="footer-actions">
+            <button type="button" id="btn-delete" class="btn-danger-outline">Delete</button>
+            <button type="button" id="btn-discard" class="btn-outline">Discard</button>
+            <button type="submit" id="btn-save" class="btn-dark">✓ Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="../static/warehouse.js"></script>
+</body>
+</html>
