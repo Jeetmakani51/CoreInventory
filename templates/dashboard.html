@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Core Inventory</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <div class="nav-links">
+            <a href="#">Dashboard</a>
+            <a href="#">Operations</a>
+            <a href="#">Stock</a>
+            <a href="movehistory.html">Move History</a>
+            <a href="#">Settings</a>
+        </div>
+
+        <div class="title">
+            Core Inventory
+        </div>
+
+    </div>
+
+
+    <div class="container">
+
+        <div class="cards">
+
+            <div class="card receipt">
+
+                <h2>Receipt</h2>
+
+                <button class="btn receive-btn">
+                    4 Items to Receive
+                </button>
+
+                <div class="stats">
+                    <p>1 Late</p>
+                    <p>6 Operations</p>
+                </div>
+
+            </div>
+
+
+            <div class="card delivery">
+
+                <h2>Delivery</h2>
+
+                <button class="btn deliver-btn">
+                    4 Items to Deliver
+                </button>
+
+                <div class="stats">
+                    <p>1 Late</p>
+                    <p>2 Waiting</p>
+                    <p>6 Operations</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

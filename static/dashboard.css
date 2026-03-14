@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #eef2f7, #f9fbff);
+}
+
+.navbar {
+  background: #fff;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.nav-links a {
+  margin-right: 20px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #4f46e5;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #4f46e5;
+}
+
+.container {
+  padding: 40px;
+}
+
+.cards {
+  display: flex;
+  gap: 25px;
+}
+
+.card {
+  flex: 1;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.receipt {
+  background: linear-gradient(#e0f2fe, #ffffff);
+}
+
+.delivery {
+  background: linear-gradient(#e9ffe8, #ffffff);
+}
+
+.btn {
+  margin-top: 12px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+.receive-btn {
+  background: #0ea5e9;
+}
+
+.deliver-btn {
+  background: #22c55e;
+}
